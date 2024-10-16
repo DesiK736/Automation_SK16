@@ -1,4 +1,4 @@
-mport java.util.Scanner;
+Import java.util.Scanner;
 
 public class GitTest {
         // Print the area of a triangle by given sides. Use formula to calculate it.
