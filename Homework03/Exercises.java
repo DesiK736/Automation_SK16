@@ -78,6 +78,7 @@ public class Exercises3 {
             System.out.println("Eligible to work");
         else
             System.out.println("Not eligible to work");
+        scanner.close();
     }
 }
 
@@ -113,6 +114,7 @@ public class Exercises4 {
             //Display the results
             System.out.printf("The revenue from sale: $%.2f\n", discountedRevenue);
             System.out.printf("The discount rate you received is %.0f%%.\n",  discountRate * 100);
+            scanner.close();
         }
     }
 }
@@ -150,6 +152,7 @@ public class Exercises5 {
                 break;
             default:
                 System.out.println("Apologies, but there is no information about this type of vacation");
+                scanner.close();
                 }
         }
     }
@@ -169,6 +172,7 @@ public class Exercises6 {
             System.out.println("Leap year");
         } else  {
             System.out.println("Not a leap year");
+            scanner.close();
         }
         }
 }
@@ -188,6 +192,7 @@ public class Exercises7 {
         double result = (choice == 1) ? (temperature *  9 / 5) + 32 :  (temperature - 32) * 5 / 9;
 
         System.out.println("Converted temperature:   " + result);
+        scanner.close();
     }
 }
 
