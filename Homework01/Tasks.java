@@ -38,6 +38,7 @@ public class Task3 {
 
         double area = (a * h) / 2;
         System.out.println("Area of Triangle is: " + area);
+        scanner.close();
     }
 }
 public class Task4 {
@@ -81,5 +82,6 @@ public class Task5 {
         int remainingMinutes = minutes % 525600;
         int day = remainingMinutes / 1440;
         System.out.println(minutes + " minutes is approximately " + year + " years and " + day + " days.");
+        scanner.close();
     }
 }
