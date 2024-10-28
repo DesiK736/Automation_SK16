@@ -26,11 +26,9 @@ public class Task2 {
         int[] list1 =  {12, 15, 32,  42, 55, 75, 122, 132, 150, 180, 200};
 
         for (int number  : list1)  {
-            //If the number is greater than 150, stop the Loop
             if (number > 150) {
                 break;
             }
-            //If  the number is divisible by 5, print it
             if (number % 5 == 0)  {
                 System.out.println(number);
             }
@@ -60,7 +58,7 @@ public class Task4 {
         for (int number  :  numbers)   {
             if (number % 5 == 0)   {
                 System.out.println("Firs multiple of 5 is:   " + number);
-                break; //Stop the Loop once the first multiple of 5 is found
+                break;
             }
         }
     }
@@ -76,7 +74,7 @@ public class Task5 {
             if (number % 3 == 0)   {
                 continue;
             }
-            System.out.println(number);  //Print the number, is it is not divisible by 3
+            System.out.println(number);
         }
     }
 }
@@ -102,6 +100,12 @@ public class Task6 {
     }
 }
 
+/* Create an interactive Java program that challenges the user to guess a randomly generated 
+number. Write a Java program that generates a random number between 1 and 100.Prompt the 
+user to guess the number by entering a value. After each guess, inform the user whether their 
+guess was correct, too high, or too low. Continue prompting the user for guesses until they 
+correctly guess the number. Once the correct number is guessed, print a congratulatory 
+message and terminate the loop. */
 
 import java.util.Random;
 import java.util.Scanner;
