@@ -9,7 +9,6 @@ public class Exercise1 {
     public static void main(String[] args) {
         HashMap<String, Integer>  inventoryProducts = new HashMap<String, Integer>();
 
-        //Add several products to the inventory with their quantities.
         inventoryProducts.put("Bread", 12);
         inventoryProducts.put("Milk", 7);
         inventoryProducts.put("Chocolate", 38);
@@ -29,7 +28,7 @@ public class Exercise1 {
           Collection<Integer>  inventoryProductsvalues = inventoryProducts.values();
           System.out.println("Butter is out of stock after setting its quantity:  " + inventoryProducts);
 
-          inventoryProducts.remove("Snacks", 41); //Remove a product from the inventory
+          inventoryProducts.remove("Snacks", 41);
         System.out.println("Updated list after removal:  " + inventoryProducts); //Print the entire inventory to see the stock levels.
       }
     }
@@ -42,7 +41,7 @@ public class Exercise2 {
     public static void main(String[] args) {
         HashSet<String>  guestList = new HashSet<String>();
 
-        guestList.add("Anna"); //Add several guest names to the list.
+        guestList.add("Anna");
         guestList.add("Kaloyan");
         guestList. add("Silvia");
         guestList.add("Petya");
