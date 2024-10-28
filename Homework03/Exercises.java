@@ -1,6 +1,12 @@
 package Homework03;
 
-import java.util.Scanner;
+/*Write a program which calculates if a triangle can be built by 3 given angles. The 
+angles are taken from the user input. There are two possible outputs – if the triangle 
+can’t be built based on the angle values or the triangle can be built based on the angle 
+values. If the triangle is possible the output should contain also the type of the triangle 
+– acute (остроъгълен), right-angled (правоъгълен), obtuse (тъпоъгълен), equilateral 
+(равностранен), isosceles (равнобедрен), multifaceted (разностранен).
+import java.util.Scanner;*/
 
 public class Exercises {
     public static void reviewTriangle(int side1, int side2, int side3) {
@@ -34,6 +40,10 @@ public class Exercises {
     }
 }
 
+/*Write a program to print the days of the week based on the user digit 1-7 
+input. The message should be “The [user input digit]-st/nd/rd/th day of the 
+week is [the day of the week]”*/
+
 public class Exercises2 {
     public  static void main(String[] args) {
         int day = 3;
@@ -65,6 +75,9 @@ public class Exercises2 {
     }
 }
 
+/* Write Java program to allow the user to input his/her age. Then the program 
+will show if the person is eligible to work. A person who is eligible to work 
+must be older than or equal to 16 years old. */
 
 import java.util.Scanner;
 
@@ -82,7 +95,11 @@ public class Exercises3 {
     }
 }
 
-import java.util.Scanner;
+/*Write a Java program to calculate the revenue from a sale based on the unit price and 
+quantity of a product input by the user. The discount rate is 15% for the quantity 
+purchased between 100 and 120 units, and 20% for the quantity purchased greater than 
+120 units. If the quantity purchased is less than 100 units, the discount rate is 0%.
+import java.util.Scanner;*/
 
 public class Exercises4 {
     public  static void  main(String[] args)  {
@@ -94,24 +111,20 @@ public class Exercises4 {
         System.out.println("Enter quantity:  ");
         int quantity = scanner.nextInt();
         {
-            //calculateRevenue parameters
             double revenue;
             double discountRate = 0;
 
-            //Calculate revenue without discount
             revenue = unitPrice * quantity;
 
-            //Apply discount, based on quantity
             if (quantity  >=  100 && quantity <= 120) {
                 discountRate = 0.15;
             } else if (quantity > 120)  {
                 discountRate = 0.20;
             }
-            //Calculate discounted revenue
+          
             double discountAmount = revenue * discountRate;
             double discountedRevenue = revenue - discountAmount;
 
-            //Display the results
             System.out.printf("The revenue from sale: $%.2f\n", discountedRevenue);
             System.out.printf("The discount rate you received is %.0f%%.\n",  discountRate * 100);
             scanner.close();
@@ -119,6 +132,13 @@ public class Exercises4 {
     }
 }
 
+/* Write a program which advices the user where to go to a vacation based on the type of the 
+vacation and the budget. There should be two options – Beach, Mountain. If the user put a 
+different value then the program should print a message that there is no information about this 
+type of vacation. Budgets are considered per day per person. If the budget per day for Beach 
+type vacation is smaller than 50 then the program should advise Bulgaria as a destination, 
+otherwise Outside Bulgaria. If the budget per day for Mountain type vacation is smaller than 30 
+then the program should advise Bulgaria as a destination, otherwise Outside Bulgaria. */
 
 import java.util.Scanner;
 
@@ -126,15 +146,12 @@ public class Exercises5 {
     public static void main(String[] args)  {
         Scanner scanner = new Scanner(System.in);
 
-        //Vacation option request
         System.out.println("Enter the option of  vacation (Beach/Mountain):  ");
         String vacationOption = scanner.nextLine().trim().toLowerCase();
 
-        //Request for the budget  - per day and per person
         System.out.println("Enter your budget per day per person:  ");
         double budgetPerDay = scanner.nextDouble();
 
-        //Advise based on the type of vacation and budget
         switch (vacationOption)  {
             case "beach":
                 if (budgetPerDay < 50) {
@@ -154,8 +171,14 @@ public class Exercises5 {
                 System.out.println("Apologies, but there is no information about this type of vacation");
                 scanner.close();
                 }
-        }
-    }
+            }
+         }
+
+/* Write a program that asks the user to enter a year. Check if the year is a leap
+year. A year is a leap year if it is divisible by 4 but not divisible by 100, except
+when it is divisible by 400. Print "Leap year" or "Not a leap year" based on the
+result. Hint: A leap year must be divisible by 4, and not divisible by 100 unless is
+divisible by 400 */
 
 import java.time.Year;
 import java.util.Scanner;
@@ -174,8 +197,14 @@ public class Exercises6 {
             System.out.println("Not a leap year");
             scanner.close();
         }
-        }
-}
+      }
+    }
+
+/* Write a program that converts temperature between Celsius and 
+Fahrenheit. The user should be able to choose the direction of conversion. 
+The program should prompt the user to enter a temperature and then ask if 
+they want to convert from Celsius to Fahrenheit or Fahrenheit to Celsius. 
+Perform the conversion based on the user's choice and print the result.*/
 
 import java.util.Scanner;
 
