@@ -1,8 +1,9 @@
+// Print the area of a triangle by given sides. Use formula to calculate it.
+// Area of Triangle = (width * height)/2; Width=3; Height=5
+
 Import java.util.Scanner;
 
 public class GitTest {
-        // Print the area of a triangle by given sides. Use formula to calculate it.
-        // Area of Triangle = (width * height)/2; Width=3; Height=5
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter the Width of the Triangle:");
