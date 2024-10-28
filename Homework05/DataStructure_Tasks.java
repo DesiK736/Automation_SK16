@@ -117,7 +117,7 @@ import java.util.Arrays;
 
 public class Tasks_Array {
     public static void main(String[] args) {
-        String[ ] colors = new String[6]; //array with defined size of 6 elements
+        String[ ] colors = new String[6];
         colors[0] = "green";
         colors[1] = "red";
         colors[2] = "yellow";
@@ -125,8 +125,8 @@ public class Tasks_Array {
         colors[4] = "white";
         colors[5] = "blue";
 
-        System.out.println("The fourth color is:  " + colors[3]); //the 4th color is under index 3, starting at 0
-      //loop through all colors and print them
+        System.out.println("The fourth color is:  " + colors[3]);
+
         for (int i = 0;  i < colors.length; i++);   {
             System.out.println(Arrays.toString(colors)); //we should use method toString() to convert "int" to String
 
@@ -138,7 +138,6 @@ public class Tasks_Array {
         }
     }
 }
-
 
 //Exercises with ArrayList
 
@@ -155,21 +154,21 @@ public class Tasks_ArrayList {
         vegetables.add("Corn");
         vegetables.add("Spinach");
 
-        System.out.println("Vegetables:   " + vegetables); //print the vegetable list
-        System.out.println(vegetables.size()); //print the size of the elements: 5 in total
-        System.out.println(vegetables.contains("Corn")); //check whether it contains in the list: true
-        System.out.println(vegetables.contains("Tomato")); //----------||----------- : false - it not contains in the list
+        System.out.println("Vegetables:   " + vegetables);
+        System.out.println(vegetables.size());
+        System.out.println(vegetables.contains("Corn"));
+        System.out.println(vegetables.contains("Tomato"));
 
         for (String vegetable  :  vegetables)   {
             System.out.println(vegetable); //loop through the list
             vegetables.forEach(System.out::println); //2-nd option for looping through the list
 
-            System.out.println("First vegetable:  " + vegetables.get(0)); //get the 1-st item under index 0
+            System.out.println("First vegetable:  " + vegetables.get(0));
 
             vegetables.set(4,  "Eggplant"); //change an item under index 4
             System.out.println("Updated ArrayList:  " + vegetables);
 
-            vegetables.remove("Cucumber"); //remove an item from the list
+            vegetables.remove("Cucumber");
             System.out.println("Updated ArrayList:  " + vegetables);
             }
         }
