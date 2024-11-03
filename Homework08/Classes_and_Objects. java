@@ -1,0 +1,377 @@
+package Homework08;
+/*Create a class named Movie that has three attributes: title, genre, and rating.
+Use this class to create different movie objects, each with its own title, genre, and rating.
+Display the details of each movie by accessing these attributes. */
+
+public class Movie {
+    String title;
+    String genre;
+    int rating;
+
+   //Parameterized Constructor with all attributes
+    public Movie(String title, String genre, int rating) {
+        this.title = "The Shawshank Redemption";
+        this.genre = "Drama";
+        this.rating = 1;
+    }
+    //Constructor with 2 parameters out of 3: title and genre
+    public Movie(String title, String genre) {
+        this.title = "The Pianist";
+        this.genre = "Biography";
+    }
+    //No-argument  Constructor
+    public Movie() {
+       this.title = "Unknown";
+       this.genre = "Empty";
+       this.rating = 0;
+    }
+
+public static void main(String[] args) {
+    Movie movie1 = new Movie("The Shawshank Redemption", "Drama", 1);
+    Movie movie2 = new Movie("The Pianist", "Biography");
+    Movie movie3 = new Movie();
+
+    System.out.println(movie1.title);
+    System.out.println(movie2.title);
+    System.out.println(movie3.title);
+    }
+}
+
+/*Create a class named Student with two attributes: one for the student's name and one for their grades.
+Add a method to the Student class that calculates and returns the average of the grades. Create student objects,
+each with a unique name and a set of grades. Print each student's name along with their average grade. */
+
+import java.util.ArrayList;
+
+class Student   {
+    private String name;
+    private ArrayList<Float>  grades;
+   
+    public Student(String name, ArrayList<Float>  grades)   {
+        this.name = name;
+        this.grades = grades;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Float>  gradesKid1 = new ArrayList<>();
+        gradesKid1.add(5.50f);
+        gradesKid1.add(4.75f);
+        gradesKid1.add(5.25f);
+
+        ArrayList<Float>  gradesKid2 = new ArrayList<>();
+        gradesKid2.add(4.50f);
+        gradesKid2.add(3.25f);
+        gradesKid2.add(6.00f);
+
+        ArrayList<Float>  gradesKid3 = new ArrayList<>();
+        gradesKid3.add(5.00f);
+        gradesKid3.add(5.25f);
+        gradesKid3.add(5.75f);
+
+        Student kid1 = new Student("Petya", gradesKid1);
+        Student kid2 = new Student("Tihomir", gradesKid2);
+        Student kid3 = new Student("Plamen", gradesKid3);
+
+        System.out.println(kid1.getName() + "'s average grade:   " + kid1.calculateAverage());
+        System.out.println(kid2.getName() + "'s average grade:   " + kid2.calculateAverage());
+        System.out.println(kid3.getName() + "'s average grade:   " + kid3.calculateAverage());
+    }
+
+    public float calculateAverage()   {
+        float sum = 0;
+        for (float grade :  grades)  {
+            sum+= grade;
+        }
+        return grades.size() > 0 ? sum / grades.size()  :  0;  //Avoid division by zero
+    }
+    
+    public String getName()  {
+        return name;
+    }
+}
+
+/*Create a class named Product with attributes such as the product name, price, category, stock quantity,
+and one attribute to indicate if the product is on sale. Define a method to put the product on sale.
+Include another method to calculate and return a discounted price if the product is on sale, applying a 10% discount
+if the price is greater than $100. If the product is not on sale, return the original price.
+Additionally, create a method that prints the product’s name, category,
+and either the discounted price or the original price, depending on whether the product is on sale. */
+
+import java.util.ArrayList;
+
+class Product {
+    private String name;
+    private float price;
+    private String category;
+    private int stockQuantity;
+    private boolean isOnSale;
+    private static String categotyOnSale = null;
+    private static ArrayList<Product>  allProducts = new ArrayList<>();
+
+    public Product(String name, float price, String category, int stockQuantity, boolean isOnSale)  {
+        this.name = name;
+        this.price = price;
+        this.category = category;
+        this.stockQuantity = stockQuantity;
+        this.isOnSale = category.equals(categotyOnSale);  //Initially the product is not on sale.
+        allProducts.add(this);
+    }
+    public static void setCategoryOnSale(String saleCategory)   {
+        categotyOnSale = saleCategory;
+        allProducts.forEach(Product :: updateSaleStatus);
+    }
+    private void updateSaleStatus()   {
+        this.isOnSale = category.equals(categotyOnSale);
+    }
+    public void putOnSale()   {
+        this.isOnSale = true;
+    }
+    public double getDiscountedPrice()   {
+        if (isOnSale && price > 100)   {
+            return price * 0.90;  //Apply 10% discount
+        }
+        return price;  //Return original price, if not on sale or price <= 100
+    }
+    public void printProductDetails()   {
+        System.out.println(name + " (" + category + ")  - Price:  EUR" + "  " + getDiscountedPrice() + ",  On Sale:  " + isOnSale);
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Product firstProduct = new Product("Tablet", 68.25f, "Electronics", 62, false);
+        Product secondProduct = new Product("Laundry", 125.00f, "Domestic appliances", 5, true);
+        Product thirdProduct = new Product("Notebook", 12.75f, "Office supplies", 43, false);
+
+        secondProduct.putOnSale();
+
+        secondProduct.printProductDetails(); //Display the discounted price: 125 EUR - 10% discount = 112.50 EUR
+        System.out.println();
+
+        firstProduct.printProductDetails();
+        System.out.println();
+
+        thirdProduct.printProductDetails();
+        System.out.println();
+
+        Product.setCategoryOnSale("Domestic appliances");
+        firstProduct.printProductDetails();
+        secondProduct.printProductDetails();
+        thirdProduct.printProductDetails();
+
+        System.out.println("\nUpdating sale to Electronics:  ");
+        Product.setCategoryOnSale("Electronics");
+       firstProduct.printProductDetails();
+       secondProduct.printProductDetails();
+       thirdProduct.printProductDetails();
+    }
+}
+
+//Class & Subclass examples
+
+public class Laptop {
+    public int price;
+    public String manufacturer;
+    public boolean compactSize;
+
+    public Laptop(int price, String manufacturer, boolean compactSize) {
+        this.price = price;
+        this.manufacturer = manufacturer;
+        this.compactSize = compactSize;
+    }
+
+    public void setManufacturer(String newItem) {
+        manufacturer = newItem;
+    }
+    
+    public static class BusinessLaptop extends Laptop {
+        public int producedYear;
+        public int screenSize;
+
+        public BusinessLaptop(int produced, int screenSize, int price, String manufacturer, boolean compactSize) {
+            super(price, manufacturer, compactSize);
+            this.producedYear = produced;
+            this.screenSize = screenSize;
+        }
+        public void setProducedYear(int newItem) {
+            producedYear = newItem;
+        }
+    }  
+
+    public static void main(String[] args) {
+        Laptop myFirst = new Laptop(450, "USA", true);
+        BusinessLaptop mySecond = new BusinessLaptop(2020, 30, 950, "UK", false);
+
+        System.out.println("Screen size for My Second Business laptop is:  " + mySecond.screenSize + " cm");
+        System.out.println("Manufacturer for My First Laptop is:  " + myFirst.manufacturer);
+    }
+}
+
+
+//Static field example for tracking numbers
+
+public class SportWare {
+    private int wareSize;
+    private String wareMaterial;
+    private boolean hasEnduranceOfUse;
+    private int id;
+    private static int numberOfSportWare = 0;
+
+    public SportWare(int wareSize, String wareMaterial, boolean hasEnduranceOfUse, int id) {
+        this.wareSize = wareSize;
+        this.wareMaterial = wareMaterial;
+        this.hasEnduranceOfUse = hasEnduranceOfUse;
+        this.id = id;
+
+        id = ++numberOfSportWare;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public static int getNumberOfSportWare()  {
+        return numberOfSportWare;
+    }
+
+    public static void main(String[] args) {
+        SportWare sneakers = new SportWare(38, "leather", true, 1);
+        SportWare trousers = new SportWare(65, "textile", false, 2);
+
+        System.out.println("Sneaker's ID number " + sneakers.getId() + "  with proper size:   " + sneakers.wareSize);
+        System.out.println("Type of material for trousers is:   " + trousers.wareMaterial);
+        System.out.println("Number of Sport ware is:   " + numberOfSportWare + " pcs.");
+    }
+}
+
+
+//Nested class example
+
+class CPU {
+    float price;
+    
+    class Processor  {
+        float cores;
+        String manufacturer;
+
+        double getCache()  {
+            return 4.4;
+        }
+    }
+   
+    protected class RAM  {
+        float memory;
+        String manufacturer;
+
+        double getClockSpeed()  {
+            return 5.6;
+        }
+    }
+}
+class Basic {
+    public static void main(String[] args) {
+        CPU cpu = new CPU();
+
+        //Create an object of Inner class Processor using outer class
+        CPU.Processor processor = cpu.new Processor();
+
+        //Create an object of Inner class RAM using outer class CPU
+        CPU.RAM ram = cpu.new RAM();
+
+        System.out.println("Processor Cache =   " + processor.getCache());
+        System.out.println("RAM clock speed =  " + ram.getClockSpeed());
+    }
+}
+
+
+//Method Overloading example, by changing the Order of the Parameters
+
+public class Employee {
+    public void employeeId(String name, int rollNum)
+    {
+        System.out.println("Name:   " + name + ",  " + "Roll-Number:   " + rollNum);
+    }
+    
+    public void employeeId(int rollNum, String name)
+    {
+        System.out.println("Roll-Number:   " + rollNum + ",  " + "Name:   " + name);
+    }
+}
+
+class Summary  {
+    public static void main(String[] args) {
+        Employee bankEmployee = new Employee();
+
+        //Passing name and id - reversing order
+        bankEmployee.employeeId("Katrin", 2);
+        bankEmployee.employeeId(1, "Pavel");
+    }
+}
+
+
+//Immutable (final) class example
+
+public final class Instrument {
+    final String barcodeNumber;
+
+    public Instrument(String barcodeNumber)  {
+        this.barcodeNumber = barcodeNumber;
+    }
+    
+    public String getBarcodeNumber()  {
+        return barcodeNumber;
+    }
+}
+class Review  {
+    public static void main(String[] args) {
+        Instrument clipper = new Instrument("25468542");
+        Instrument hammer = new Instrument("31254785");
+        Instrument multifunctionalTool = new Instrument("76458912");
+
+        String instrument1 = clipper.getBarcodeNumber();
+        System.out.println("Barcode number for Clipper is:   " + instrument1);
+
+        String instrument2 = hammer.getBarcodeNumber();
+        System.out.println("Barcode number for Hammer is:   " + instrument2);
+
+        String instrument3 = multifunctionalTool.getBarcodeNumber();
+        System.out.println("Barcode number for  Multifunctional tool is:   " + instrument3);
+    }
+}
+
+
+//Static variable & static method example
+
+public class Airplane {
+static int numberOfAirplanes = 0;
+    String model;
+
+    public Airplane(String model)  {
+        this.model = model;
+        numberOfAirplanes++;
+    }
+    
+    public static int getTotalAirplanes()  {
+        return numberOfAirplanes;
+    }
+    
+    public void displayAirplaneDetails()  {
+        System.out.println("Airplane model:   " + model);
+    }
+}
+class TheMain  {
+    public static void main(String[] args) {
+        Airplane militaryAirplane = new Airplane("F-16");
+        Airplane passengerAirplane = new Airplane("Boeing 737");
+        Airplane cargoAirplane = new Airplane("Airbus A 380");
+
+        militaryAirplane.displayAirplaneDetails();
+        passengerAirplane.displayAirplaneDetails();
+        cargoAirplane.displayAirplaneDetails();
+
+        //Accessing static method using class name (preferred way):
+        System.out.println("Total Airplanes created:   " + Airplane.getTotalAirplanes());
+
+       //Accessing static variable directly:
+        System.out.println("Static variable numberOfAirplanes:   " + Airplane.numberOfAirplanes);
+    }
+}
+
