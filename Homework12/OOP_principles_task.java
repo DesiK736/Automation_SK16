@@ -215,3 +215,49 @@ class Child extends Person  {
         System.out.println("The child is playing with dolls.");
     }
 }
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            Bulgarian bulgarian = new Bulgarian("Plamen", "Male", "Orthodox", "Bulgarian", "8512202578", 39 , "Architect", "Bulgaria");
+            American american = new American("Antony", "Male", "Catholic", "English", "7505083699", 49,"Athlete", "USA");
+            Italian italian = new Italian("Paolo", "Male", "Catholic", "Italian", "9503241548", 29, "Artist", "Italy");
+            Child child = new Child("Petra", "Female", "Orthodox", "English", "Estonian", "1002153564", 14 , "irrelevant", "Estonia");
+
+            bulgarian.sayHello();
+            System.out.println("Plamen is  " + bulgarian.calculateAge(LocalDate.of(1985, 12, 20)) + " years old.");
+            System.out.println(bulgarian.toString());
+            bulgarian.celebrateEaster();
+            bulgarian.danceHoro();
+            System.out.println("Plamen is adult? " + "- " + bulgarian.isAdult());
+            System.out.println("Can Plamen take a loan?  " + "- " + bulgarian.canTakeLoan());
+            System.out.println("\n--------------------\n");
+
+            american.sayHello();
+            System.out.println("Antony is  " + american.calculateAge(LocalDate.of(1975,5, 8)) + "  years old.");
+            System.out.println(american.toString());
+            american.celebrateEaster();
+            american.celebrateThanksGiving();
+            System.out.println("\n--------------------\n");
+
+            italian.sayHello();
+            System.out.println("Paolo is  " + italian.calculateAge(LocalDate.of(1995, 3, 24)) + "  years old.");
+            italian.celebrateEaster();
+            italian.makePizza();
+            System.out.println("\n--------------------\n");
+
+            child.sayHello();
+            System.out.println("Petra is  " + child.calculateAge(LocalDate.of(2010, 2, 15)) + "  years old.");
+            child.celebrateEaster();
+            child.play();
+            System.out.println("Is the child an adult?  " + "- " + child.isAdult());
+            child.setJob("student");
+            System.out.println("Petra is pretty young for work. She is student.");
+
+        } catch (InvalidDataException e)  {
+            System.err.println("Error:  "  + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
